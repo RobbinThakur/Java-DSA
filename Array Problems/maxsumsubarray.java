@@ -1,24 +1,35 @@
-package arrays;
+package Arrays;
 
 public class maxsumsubarray {
-	
-	static void subarray(int a[]) {
-		int curSum=0;
-		int maxSum=Integer.MIN_VALUE;
-		
-		for(int i=0;i<a.length;i++) {
-			curSum += a[i];
-			if(curSum < 0) curSum=0;
-			if(curSum > maxSum) maxSum=curSum;
+	public static void maxsum(int arr[]) {
+		int cursum = 0;
+		int maxsum = Integer.MIN_VALUE;
+		//start point
+		for(int i=0;i<arr.length;i++) {
+			
+			//end point
+			for(int j=i;j<arr.length;j++) {
+				cursum=0;
+				//printing subarrays
+				for(int k = i;k<=j;k++) {
+					cursum += arr[k];
+				}
+				if(cursum > maxsum) {
+					maxsum = cursum;
+				}
+				
+			}
+			
+			
 		}
-		System.out.println(maxSum);
+		System.out.println("max sum of subarray : "+ maxsum);
+		
+		
 	}
-	
-	public static void main(String args[]) {
+	public static void main(String[] args) {
+		int a[] = {2,4,6,8,10};
 		
-		int  b[]= {6,-3,4,-2,1,5,-4};
-		
-		subarray(b);
+		maxsum(a);
 	}
 
 }
